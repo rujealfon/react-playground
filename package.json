@@ -10,7 +10,7 @@
     "lint:fix": "eslint --fix .",
     "preview": "vite preview",
     "prepare": "husky",
-    "test": "vitest"
+    "test": "vitest run"
   },
   "dependencies": {
     "@types/node": "^22.15.17",
