@@ -1,4 +1,7 @@
 module.exports = {
+  plugins: ['prettier-plugin-organize-imports', 'prettier-plugin-tailwindcss'],
+  tailwindStylesheet: './src/assets/styles/index.css',
+  tailwindFunctions: ['clsx', 'tw'],
   semi: true,
   trailingComma: 'all',
   singleQuote: true,

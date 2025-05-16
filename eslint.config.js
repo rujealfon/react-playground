@@ -1,12 +1,12 @@
-import globals from 'globals';
+import eslintJs from '@eslint/js';
 import tseslint from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
-import reactPlugin from 'eslint-plugin-react';
-import reactHooksPlugin from 'eslint-plugin-react-hooks';
+import eslintConfigPrettier from 'eslint-config-prettier'; // Turns off all rules that are unnecessary or might conflict with Prettier.
 import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
 import prettierPlugin from 'eslint-plugin-prettier';
-import eslintConfigPrettier from 'eslint-config-prettier'; // Turns off all rules that are unnecessary or might conflict with Prettier.
-import eslintJs from '@eslint/js';
+import reactPlugin from 'eslint-plugin-react';
+import reactHooksPlugin from 'eslint-plugin-react-hooks';
+import globals from 'globals';
 
 export default [
   {
