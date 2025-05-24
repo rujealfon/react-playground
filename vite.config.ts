@@ -1,6 +1,7 @@
 /// <reference types="vitest" />
 
 import tailwindcss from '@tailwindcss/vite';
+import { TanStackRouterVite } from '@tanstack/router-plugin/vite';
 import react from '@vitejs/plugin-react';
 import path from 'node:path';
 import { defineConfig } from 'vite';
@@ -12,6 +13,12 @@ const ReactCompilerConfig = {
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
+    // Please make sure that '@tanstack/router-plugin' is passed before '@vitejs/plugin-react'
+    TanStackRouterVite({
+      target: 'react',
+      autoCodeSplitting: true,
+      generatedRouteTree: './src/app/routeTree.gen.ts',
+    }),
     react({
       babel: {
         plugins: [['babel-plugin-react-compiler', ReactCompilerConfig]],
