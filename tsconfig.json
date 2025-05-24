@@ -2,7 +2,12 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@/features/*": ["./src/features/*"],
+      "@/shared/*": ["./src/features/shared/*"],
+      "@/auth/*": ["./src/features/auth/*"],
+      "@/dashboard/*": ["./src/features/dashboard/*"],
+      "@/public/*": ["./src/features/public/*"]
     }
   },
   "references": [

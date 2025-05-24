@@ -1,6 +1,6 @@
 # React Playground
 
-A modern React application built with TypeScript, Vite, TanStack Router, and Tailwind CSS. This playground demonstrates modern React patterns, components, and best practices.
+A modern React application built with TypeScript, Vite, TanStack Router, and Tailwind CSS. This playground demonstrates modern React patterns, components, and best practices using a **feature-based architecture**.
 
 ## Features
 
@@ -11,6 +11,18 @@ A modern React application built with TypeScript, Vite, TanStack Router, and Tai
 - 🧭 **Type-safe Routing** - TanStack Router for type-safe routing
 - 🧪 **Testing** - Comprehensive test suite with Vitest and Testing Library
 - 📱 **Responsive** - Mobile-first responsive design
+- 🏗️ **Feature-Based Architecture** - Organized by business features for better scalability
+
+## Architecture
+
+This project uses a **feature-based architecture** that organizes code by business features rather than technical layers. This approach provides:
+
+- **Better Scalability** - Easy to add new features without affecting existing ones
+- **Improved Maintainability** - Related code is co-located and easier to find
+- **Team Collaboration** - Multiple developers can work on different features independently
+- **Clear Boundaries** - Each feature is self-contained with its own components, hooks, and services
+
+For detailed information about the architecture, see [FEATURE_ARCHITECTURE.md](./FEATURE_ARCHITECTURE.md).
 
 ## Dark Mode
 
@@ -88,14 +100,34 @@ npm run dev
 
 ```
 src/
-├── app/                 # App configuration and routing
-├── assets/             # Static assets and styles
-├── components/         # Reusable UI components
-│   ├── layouts/       # Layout components
-│   └── ui/            # UI components (buttons, forms, etc.)
-├── lib/               # Utility functions and configurations
-├── routes/            # Route components
-└── types/             # TypeScript type definitions
+├── app/                    # App configuration and setup
+├── assets/                 # Static assets (images, styles)
+├── features/              # Feature-based modules
+│   ├── auth/              # Authentication feature
+│   │   ├── components/    # Auth-specific components
+│   │   ├── hooks/         # Auth-specific hooks
+│   │   ├── pages/         # Auth pages (login, register)
+│   │   ├── services/      # Auth API services
+│   │   └── types/         # Auth TypeScript types
+│   ├── dashboard/         # Dashboard feature
+│   │   ├── components/    # Dashboard-specific components
+│   │   ├── hooks/         # Dashboard-specific hooks
+│   │   ├── pages/         # Dashboard pages (analytics, users, etc.)
+│   │   ├── services/      # Dashboard API services
+│   │   └── types/         # Dashboard TypeScript types
+│   ├── public/            # Public pages feature
+│   │   ├── components/    # Public-specific components
+│   │   ├── hooks/         # Public-specific hooks
+│   │   ├── pages/         # Public pages (home, about)
+│   │   ├── services/      # Public API services
+│   │   └── types/         # Public TypeScript types
+│   └── shared/            # Shared/common code
+│       ├── components/    # Reusable UI components
+│       ├── hooks/         # Shared hooks
+│       ├── services/      # Shared services
+│       ├── types/         # Shared TypeScript types
+│       └── utils/         # Utility functions
+└── routes/                # TanStack Router route definitions
 ```
 
 ## Contributing

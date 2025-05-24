@@ -1,5 +1,6 @@
-import { ThemeToggle } from '@/components/shared/theme-toggle';
-import { Button } from '@/components/ui/button';
+import { Link, Outlet } from '@tanstack/react-router';
+import React from 'react';
+import { Button } from './button';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -7,10 +8,9 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-} from '@/components/ui/navigation-menu';
-import { Separator } from '@/components/ui/separator';
-import { Link, Outlet } from '@tanstack/react-router';
-import React from 'react';
+} from './navigation-menu';
+import { Separator } from './separator';
+import { ThemeToggle } from './theme-toggle';
 
 export const PublicLayout: React.FC = () => {
   return (

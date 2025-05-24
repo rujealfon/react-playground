@@ -1,13 +1,3 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Button } from '@/components/ui/button';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
 import { Link, Outlet } from '@tanstack/react-router';
 import {
   BarChart3,
@@ -22,6 +12,16 @@ import {
   X,
 } from 'lucide-react';
 import React, { useState } from 'react';
+import { Avatar, AvatarFallback, AvatarImage } from './avatar';
+import { Button } from './button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from './dropdown-menu';
 
 const sidebarItems = [
   { icon: Home, label: 'Dashboard', href: '/dashboard', active: true },
