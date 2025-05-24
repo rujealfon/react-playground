@@ -10,19 +10,19 @@
 
 // Import Routes
 
-import { Route as rootRoute } from './../routes/__root'
-import { Route as DashboardImport } from './../routes/dashboard'
-import { Route as AuthImport } from './../routes/auth'
-import { Route as PublicImport } from './../routes/_public'
-import { Route as DashboardIndexImport } from './../routes/dashboard/index'
-import { Route as PublicIndexImport } from './../routes/_public/index'
-import { Route as DashboardUsersImport } from './../routes/dashboard/users'
-import { Route as DashboardSettingsImport } from './../routes/dashboard/settings'
-import { Route as DashboardReportsImport } from './../routes/dashboard/reports'
-import { Route as DashboardAnalyticsImport } from './../routes/dashboard/analytics'
-import { Route as AuthRegisterImport } from './../routes/auth/register'
-import { Route as AuthLoginImport } from './../routes/auth/login'
-import { Route as PublicAboutImport } from './../routes/_public/about'
+import { Route as rootRoute } from './routes/__root'
+import { Route as DashboardImport } from './routes/dashboard'
+import { Route as AuthImport } from './routes/auth'
+import { Route as PublicImport } from './routes/_public'
+import { Route as DashboardIndexImport } from './routes/dashboard/index'
+import { Route as PublicIndexImport } from './routes/_public/index'
+import { Route as DashboardUsersImport } from './routes/dashboard/users'
+import { Route as DashboardSettingsImport } from './routes/dashboard/settings'
+import { Route as DashboardReportsImport } from './routes/dashboard/reports'
+import { Route as DashboardAnalyticsImport } from './routes/dashboard/analytics'
+import { Route as AuthRegisterImport } from './routes/auth/register'
+import { Route as AuthLoginImport } from './routes/auth/login'
+import { Route as PublicAboutImport } from './routes/_public/about'
 
 // Create/Update Routes
 
