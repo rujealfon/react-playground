@@ -11,211 +11,230 @@
 // Import Routes
 
 import { Route as rootRoute } from './../routes/__root'
-import { Route as DashboardImport } from './../routes/dashboard'
-import { Route as AuthImport } from './../routes/auth'
-import { Route as PublicImport } from './../routes/_public'
+import { Route as DashboardRouteImport } from './../routes/dashboard/route'
+import { Route as AuthRouteImport } from './../routes/auth/route'
+import { Route as publicRouteImport } from './../routes/(public)/route'
 import { Route as DashboardIndexImport } from './../routes/dashboard/index'
-import { Route as PublicIndexImport } from './../routes/_public/index'
+import { Route as AuthIndexImport } from './../routes/auth/index'
+import { Route as publicIndexImport } from './../routes/(public)/index'
 import { Route as DashboardUsersImport } from './../routes/dashboard/users'
 import { Route as DashboardSettingsImport } from './../routes/dashboard/settings'
 import { Route as DashboardReportsImport } from './../routes/dashboard/reports'
 import { Route as DashboardAnalyticsImport } from './../routes/dashboard/analytics'
 import { Route as AuthRegisterImport } from './../routes/auth/register'
 import { Route as AuthLoginImport } from './../routes/auth/login'
-import { Route as PublicAboutImport } from './../routes/_public/about'
+import { Route as publicAboutImport } from './../routes/(public)/about'
 
 // Create/Update Routes
 
-const DashboardRoute = DashboardImport.update({
+const DashboardRouteRoute = DashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
   getParentRoute: () => rootRoute,
 } as any)
 
-const AuthRoute = AuthImport.update({
+const AuthRouteRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
   getParentRoute: () => rootRoute,
 } as any)
 
-const PublicRoute = PublicImport.update({
-  id: '/_public',
+const publicRouteRoute = publicRouteImport.update({
+  id: '/(public)',
   getParentRoute: () => rootRoute,
 } as any)
 
 const DashboardIndexRoute = DashboardIndexImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => DashboardRoute,
+  getParentRoute: () => DashboardRouteRoute,
 } as any)
 
-const PublicIndexRoute = PublicIndexImport.update({
+const AuthIndexRoute = AuthIndexImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => PublicRoute,
+  getParentRoute: () => AuthRouteRoute,
+} as any)
+
+const publicIndexRoute = publicIndexImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => publicRouteRoute,
 } as any)
 
 const DashboardUsersRoute = DashboardUsersImport.update({
   id: '/users',
   path: '/users',
-  getParentRoute: () => DashboardRoute,
+  getParentRoute: () => DashboardRouteRoute,
 } as any)
 
 const DashboardSettingsRoute = DashboardSettingsImport.update({
   id: '/settings',
   path: '/settings',
-  getParentRoute: () => DashboardRoute,
+  getParentRoute: () => DashboardRouteRoute,
 } as any)
 
 const DashboardReportsRoute = DashboardReportsImport.update({
   id: '/reports',
   path: '/reports',
-  getParentRoute: () => DashboardRoute,
+  getParentRoute: () => DashboardRouteRoute,
 } as any)
 
 const DashboardAnalyticsRoute = DashboardAnalyticsImport.update({
   id: '/analytics',
   path: '/analytics',
-  getParentRoute: () => DashboardRoute,
+  getParentRoute: () => DashboardRouteRoute,
 } as any)
 
 const AuthRegisterRoute = AuthRegisterImport.update({
   id: '/register',
   path: '/register',
-  getParentRoute: () => AuthRoute,
+  getParentRoute: () => AuthRouteRoute,
 } as any)
 
 const AuthLoginRoute = AuthLoginImport.update({
   id: '/login',
   path: '/login',
-  getParentRoute: () => AuthRoute,
+  getParentRoute: () => AuthRouteRoute,
 } as any)
 
-const PublicAboutRoute = PublicAboutImport.update({
+const publicAboutRoute = publicAboutImport.update({
   id: '/about',
   path: '/about',
-  getParentRoute: () => PublicRoute,
+  getParentRoute: () => publicRouteRoute,
 } as any)
 
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/_public': {
-      id: '/_public'
-      path: ''
-      fullPath: ''
-      preLoaderRoute: typeof PublicImport
+    '/(public)': {
+      id: '/(public)'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof publicRouteImport
       parentRoute: typeof rootRoute
     }
     '/auth': {
       id: '/auth'
       path: '/auth'
       fullPath: '/auth'
-      preLoaderRoute: typeof AuthImport
+      preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRoute
     }
     '/dashboard': {
       id: '/dashboard'
       path: '/dashboard'
       fullPath: '/dashboard'
-      preLoaderRoute: typeof DashboardImport
+      preLoaderRoute: typeof DashboardRouteImport
       parentRoute: typeof rootRoute
     }
-    '/_public/about': {
-      id: '/_public/about'
+    '/(public)/about': {
+      id: '/(public)/about'
       path: '/about'
       fullPath: '/about'
-      preLoaderRoute: typeof PublicAboutImport
-      parentRoute: typeof PublicImport
+      preLoaderRoute: typeof publicAboutImport
+      parentRoute: typeof publicRouteImport
     }
     '/auth/login': {
       id: '/auth/login'
       path: '/login'
       fullPath: '/auth/login'
       preLoaderRoute: typeof AuthLoginImport
-      parentRoute: typeof AuthImport
+      parentRoute: typeof AuthRouteImport
     }
     '/auth/register': {
       id: '/auth/register'
       path: '/register'
       fullPath: '/auth/register'
       preLoaderRoute: typeof AuthRegisterImport
-      parentRoute: typeof AuthImport
+      parentRoute: typeof AuthRouteImport
     }
     '/dashboard/analytics': {
       id: '/dashboard/analytics'
       path: '/analytics'
       fullPath: '/dashboard/analytics'
       preLoaderRoute: typeof DashboardAnalyticsImport
-      parentRoute: typeof DashboardImport
+      parentRoute: typeof DashboardRouteImport
     }
     '/dashboard/reports': {
       id: '/dashboard/reports'
       path: '/reports'
       fullPath: '/dashboard/reports'
       preLoaderRoute: typeof DashboardReportsImport
-      parentRoute: typeof DashboardImport
+      parentRoute: typeof DashboardRouteImport
     }
     '/dashboard/settings': {
       id: '/dashboard/settings'
       path: '/settings'
       fullPath: '/dashboard/settings'
       preLoaderRoute: typeof DashboardSettingsImport
-      parentRoute: typeof DashboardImport
+      parentRoute: typeof DashboardRouteImport
     }
     '/dashboard/users': {
       id: '/dashboard/users'
       path: '/users'
       fullPath: '/dashboard/users'
       preLoaderRoute: typeof DashboardUsersImport
-      parentRoute: typeof DashboardImport
+      parentRoute: typeof DashboardRouteImport
     }
-    '/_public/': {
-      id: '/_public/'
+    '/(public)/': {
+      id: '/(public)/'
       path: '/'
       fullPath: '/'
-      preLoaderRoute: typeof PublicIndexImport
-      parentRoute: typeof PublicImport
+      preLoaderRoute: typeof publicIndexImport
+      parentRoute: typeof publicRouteImport
+    }
+    '/auth/': {
+      id: '/auth/'
+      path: '/'
+      fullPath: '/auth/'
+      preLoaderRoute: typeof AuthIndexImport
+      parentRoute: typeof AuthRouteImport
     }
     '/dashboard/': {
       id: '/dashboard/'
       path: '/'
       fullPath: '/dashboard/'
       preLoaderRoute: typeof DashboardIndexImport
-      parentRoute: typeof DashboardImport
+      parentRoute: typeof DashboardRouteImport
     }
   }
 }
 
 // Create and export the route tree
 
-interface PublicRouteChildren {
-  PublicAboutRoute: typeof PublicAboutRoute
-  PublicIndexRoute: typeof PublicIndexRoute
+interface publicRouteRouteChildren {
+  publicAboutRoute: typeof publicAboutRoute
+  publicIndexRoute: typeof publicIndexRoute
 }
 
-const PublicRouteChildren: PublicRouteChildren = {
-  PublicAboutRoute: PublicAboutRoute,
-  PublicIndexRoute: PublicIndexRoute,
+const publicRouteRouteChildren: publicRouteRouteChildren = {
+  publicAboutRoute: publicAboutRoute,
+  publicIndexRoute: publicIndexRoute,
 }
 
-const PublicRouteWithChildren =
-  PublicRoute._addFileChildren(PublicRouteChildren)
+const publicRouteRouteWithChildren = publicRouteRoute._addFileChildren(
+  publicRouteRouteChildren,
+)
 
-interface AuthRouteChildren {
+interface AuthRouteRouteChildren {
   AuthLoginRoute: typeof AuthLoginRoute
   AuthRegisterRoute: typeof AuthRegisterRoute
+  AuthIndexRoute: typeof AuthIndexRoute
 }
 
-const AuthRouteChildren: AuthRouteChildren = {
+const AuthRouteRouteChildren: AuthRouteRouteChildren = {
   AuthLoginRoute: AuthLoginRoute,
   AuthRegisterRoute: AuthRegisterRoute,
+  AuthIndexRoute: AuthIndexRoute,
 }
 
-const AuthRouteWithChildren = AuthRoute._addFileChildren(AuthRouteChildren)
+const AuthRouteRouteWithChildren = AuthRouteRoute._addFileChildren(
+  AuthRouteRouteChildren,
+)
 
-interface DashboardRouteChildren {
+interface DashboardRouteRouteChildren {
   DashboardAnalyticsRoute: typeof DashboardAnalyticsRoute
   DashboardReportsRoute: typeof DashboardReportsRoute
   DashboardSettingsRoute: typeof DashboardSettingsRoute
@@ -223,7 +242,7 @@ interface DashboardRouteChildren {
   DashboardIndexRoute: typeof DashboardIndexRoute
 }
 
-const DashboardRouteChildren: DashboardRouteChildren = {
+const DashboardRouteRouteChildren: DashboardRouteRouteChildren = {
   DashboardAnalyticsRoute: DashboardAnalyticsRoute,
   DashboardReportsRoute: DashboardReportsRoute,
   DashboardSettingsRoute: DashboardSettingsRoute,
@@ -231,58 +250,59 @@ const DashboardRouteChildren: DashboardRouteChildren = {
   DashboardIndexRoute: DashboardIndexRoute,
 }
 
-const DashboardRouteWithChildren = DashboardRoute._addFileChildren(
-  DashboardRouteChildren,
+const DashboardRouteRouteWithChildren = DashboardRouteRoute._addFileChildren(
+  DashboardRouteRouteChildren,
 )
 
 export interface FileRoutesByFullPath {
-  '': typeof PublicRouteWithChildren
-  '/auth': typeof AuthRouteWithChildren
-  '/dashboard': typeof DashboardRouteWithChildren
-  '/about': typeof PublicAboutRoute
+  '/': typeof publicIndexRoute
+  '/auth': typeof AuthRouteRouteWithChildren
+  '/dashboard': typeof DashboardRouteRouteWithChildren
+  '/about': typeof publicAboutRoute
   '/auth/login': typeof AuthLoginRoute
   '/auth/register': typeof AuthRegisterRoute
   '/dashboard/analytics': typeof DashboardAnalyticsRoute
   '/dashboard/reports': typeof DashboardReportsRoute
   '/dashboard/settings': typeof DashboardSettingsRoute
   '/dashboard/users': typeof DashboardUsersRoute
-  '/': typeof PublicIndexRoute
+  '/auth/': typeof AuthIndexRoute
   '/dashboard/': typeof DashboardIndexRoute
 }
 
 export interface FileRoutesByTo {
-  '/auth': typeof AuthRouteWithChildren
-  '/about': typeof PublicAboutRoute
+  '/about': typeof publicAboutRoute
   '/auth/login': typeof AuthLoginRoute
   '/auth/register': typeof AuthRegisterRoute
   '/dashboard/analytics': typeof DashboardAnalyticsRoute
   '/dashboard/reports': typeof DashboardReportsRoute
   '/dashboard/settings': typeof DashboardSettingsRoute
   '/dashboard/users': typeof DashboardUsersRoute
-  '/': typeof PublicIndexRoute
+  '/': typeof publicIndexRoute
+  '/auth': typeof AuthIndexRoute
   '/dashboard': typeof DashboardIndexRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
-  '/_public': typeof PublicRouteWithChildren
-  '/auth': typeof AuthRouteWithChildren
-  '/dashboard': typeof DashboardRouteWithChildren
-  '/_public/about': typeof PublicAboutRoute
+  '/(public)': typeof publicRouteRouteWithChildren
+  '/auth': typeof AuthRouteRouteWithChildren
+  '/dashboard': typeof DashboardRouteRouteWithChildren
+  '/(public)/about': typeof publicAboutRoute
   '/auth/login': typeof AuthLoginRoute
   '/auth/register': typeof AuthRegisterRoute
   '/dashboard/analytics': typeof DashboardAnalyticsRoute
   '/dashboard/reports': typeof DashboardReportsRoute
   '/dashboard/settings': typeof DashboardSettingsRoute
   '/dashboard/users': typeof DashboardUsersRoute
-  '/_public/': typeof PublicIndexRoute
+  '/(public)/': typeof publicIndexRoute
+  '/auth/': typeof AuthIndexRoute
   '/dashboard/': typeof DashboardIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    | ''
+    | '/'
     | '/auth'
     | '/dashboard'
     | '/about'
@@ -292,11 +312,10 @@ export interface FileRouteTypes {
     | '/dashboard/reports'
     | '/dashboard/settings'
     | '/dashboard/users'
-    | '/'
+    | '/auth/'
     | '/dashboard/'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | '/auth'
     | '/about'
     | '/auth/login'
     | '/auth/register'
@@ -305,34 +324,36 @@ export interface FileRouteTypes {
     | '/dashboard/settings'
     | '/dashboard/users'
     | '/'
+    | '/auth'
     | '/dashboard'
   id:
     | '__root__'
-    | '/_public'
+    | '/(public)'
     | '/auth'
     | '/dashboard'
-    | '/_public/about'
+    | '/(public)/about'
     | '/auth/login'
     | '/auth/register'
     | '/dashboard/analytics'
     | '/dashboard/reports'
     | '/dashboard/settings'
     | '/dashboard/users'
-    | '/_public/'
+    | '/(public)/'
+    | '/auth/'
     | '/dashboard/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
-  PublicRoute: typeof PublicRouteWithChildren
-  AuthRoute: typeof AuthRouteWithChildren
-  DashboardRoute: typeof DashboardRouteWithChildren
+  publicRouteRoute: typeof publicRouteRouteWithChildren
+  AuthRouteRoute: typeof AuthRouteRouteWithChildren
+  DashboardRouteRoute: typeof DashboardRouteRouteWithChildren
 }
 
 const rootRouteChildren: RootRouteChildren = {
-  PublicRoute: PublicRouteWithChildren,
-  AuthRoute: AuthRouteWithChildren,
-  DashboardRoute: DashboardRouteWithChildren,
+  publicRouteRoute: publicRouteRouteWithChildren,
+  AuthRouteRoute: AuthRouteRouteWithChildren,
+  DashboardRouteRoute: DashboardRouteRouteWithChildren,
 }
 
 export const routeTree = rootRoute
@@ -345,27 +366,28 @@ export const routeTree = rootRoute
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/_public",
+        "/(public)",
         "/auth",
         "/dashboard"
       ]
     },
-    "/_public": {
-      "filePath": "_public.tsx",
+    "/(public)": {
+      "filePath": "(public)/route.tsx",
       "children": [
-        "/_public/about",
-        "/_public/"
+        "/(public)/about",
+        "/(public)/"
       ]
     },
     "/auth": {
-      "filePath": "auth.tsx",
+      "filePath": "auth/route.tsx",
       "children": [
         "/auth/login",
-        "/auth/register"
+        "/auth/register",
+        "/auth/"
       ]
     },
     "/dashboard": {
-      "filePath": "dashboard.tsx",
+      "filePath": "dashboard/route.tsx",
       "children": [
         "/dashboard/analytics",
         "/dashboard/reports",
@@ -374,9 +396,9 @@ export const routeTree = rootRoute
         "/dashboard/"
       ]
     },
-    "/_public/about": {
-      "filePath": "_public/about.tsx",
-      "parent": "/_public"
+    "/(public)/about": {
+      "filePath": "(public)/about.tsx",
+      "parent": "/(public)"
     },
     "/auth/login": {
       "filePath": "auth/login.tsx",
@@ -402,9 +424,13 @@ export const routeTree = rootRoute
       "filePath": "dashboard/users.tsx",
       "parent": "/dashboard"
     },
-    "/_public/": {
-      "filePath": "_public/index.tsx",
-      "parent": "/_public"
+    "/(public)/": {
+      "filePath": "(public)/index.tsx",
+      "parent": "/(public)"
+    },
+    "/auth/": {
+      "filePath": "auth/index.tsx",
+      "parent": "/auth"
     },
     "/dashboard/": {
       "filePath": "dashboard/index.tsx",
