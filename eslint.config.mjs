@@ -6,6 +6,7 @@ import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
 import prettierPlugin from 'eslint-plugin-prettier';
 import reactPlugin from 'eslint-plugin-react';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
+import youMightNotNeedAnEffect from 'eslint-plugin-react-you-might-not-need-an-effect';
 import globals from 'globals';
 
 export default [
@@ -31,6 +32,7 @@ export default [
       react: reactPlugin,
       'react-hooks': reactHooksPlugin,
       'jsx-a11y': jsxA11yPlugin,
+      'react-you-might-not-need-an-effect': youMightNotNeedAnEffect,
       prettier: prettierPlugin,
     },
   },
@@ -65,6 +67,7 @@ export default [
       'react/react-in-jsx-scope': 'off',
       'react/prop-types': 'off',
       '@typescript-eslint/explicit-module-boundary-types': 'off',
+      'react-you-might-not-need-an-effect/you-might-not-need-an-effect': 'warn',
       // Spread prettier config rules to disable conflicting ones
       ...eslintConfigPrettier.rules,
     },

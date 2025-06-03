@@ -1,4 +1,23 @@
 import { createFileRoute } from '@tanstack/react-router';
+// import { Head, useForm } from '@inertiajs/react';
+
+import TextLink from '@/components/shared/text-link';
+import { Button } from '@/components/ui/button';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+// import AuthLayout from '@/layouts/auth-layout';
+
+// type LoginForm = {
+//   email: string;
+//   password: string;
+//   remember: boolean;
+// };
+
+// interface LoginProps {
+//   status?: string;
+//   canResetPassword: boolean;
+// }
 
 export const Route = createFileRoute('/auth/login')({
   component: Login,
@@ -6,63 +25,80 @@ export const Route = createFileRoute('/auth/login')({
 
 function Login() {
   return (
-    <div className="container mx-auto max-w-7xl px-4 py-16">
-      <div className="mx-auto max-w-md">
-        <div className="space-y-6 rounded-lg border border-border bg-card p-8">
-          <div className="text-center">
-            <h1 className="text-2xl font-bold text-card-foreground">Sign In</h1>
-            <p className="text-muted-foreground">
-              Welcome back to React Playground
-            </p>
-          </div>
+    // <Head title="Log in" />
 
-          <form className="space-y-4">
-            <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-foreground"
-              >
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                className="mt-1 block w-full rounded-md border border-border bg-background px-3 py-2 text-foreground placeholder:text-muted-foreground focus:border-ring focus:ring-2 focus:ring-ring focus:outline-none"
-                placeholder="Enter your email"
-              />
-            </div>
-
-            <div>
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium text-foreground"
-              >
-                Password
-              </label>
-              <input
-                type="password"
-                id="password"
-                className="mt-1 block w-full rounded-md border border-border bg-background px-3 py-2 text-foreground placeholder:text-muted-foreground focus:border-ring focus:ring-2 focus:ring-ring focus:outline-none"
-                placeholder="Enter your password"
-              />
-            </div>
-
-            <button
-              type="submit"
-              className="w-full rounded-md bg-primary px-4 py-2 font-medium text-primary-foreground hover:bg-primary/90"
-            >
-              Sign In
-            </button>
-          </form>
-
-          <p className="text-center text-sm text-muted-foreground">
-            Don&apos;t have an account?{' '}
-            <a href="/auth/register" className="text-primary hover:underline">
-              Sign up
-            </a>
-          </p>
+    <form className="flex flex-col gap-6">
+      <div className="grid gap-6">
+        <div className="grid gap-2">
+          <Label htmlFor="email">Email address</Label>
+          <Input
+            id="email"
+            type="email"
+            required
+            // autoFocus
+            // tabIndex={1}
+            autoComplete="email"
+            // value={data.email}
+            // onChange={e => setData('email', e.target.value)}
+            placeholder="email@example.com"
+          />
+          {/* <InputError message={errors.email} /> */}
         </div>
+
+        <div className="grid gap-2">
+          <div className="flex items-center">
+            <Label htmlFor="password">Password</Label>
+            {/* {canResetPassword && ( */}
+            <TextLink
+              // href={route('password.request')}
+              className="ml-auto text-sm"
+              // tabIndex={5}
+            >
+              Forgot password?
+            </TextLink>
+            {/* )} */}
+          </div>
+          <Input
+            id="password"
+            type="password"
+            required
+            // tabIndex={2}
+            autoComplete="current-password"
+            // value={data.password}
+            // onChange={e => setData('password', e.target.value)}
+            placeholder="Password"
+          />
+          {/* <InputError message={errors.password} /> */}
+        </div>
+
+        <div className="flex items-center space-x-3">
+          <Checkbox
+            id="remember"
+            name="remember"
+            // checked={data.remember}
+            // onClick={() => setData('remember', !data.remember)}
+            // tabIndex={3}
+          />
+          <Label htmlFor="remember">Remember me</Label>
+        </div>
+
+        <Button
+          type="submit"
+          className="mt-4 w-full"
+          // tabIndex={4}
+          // disabled={processing}
+        >
+          {/* {processing && <LoaderCircle className="h-4 w-4 animate-spin" />} */}
+          Log in
+        </Button>
       </div>
-    </div>
+
+      <div className="text-center text-sm text-muted-foreground">
+        Don&apos;t have an account?{' '}
+        <TextLink to="/auth/register">Sign up</TextLink>
+      </div>
+    </form>
+
+    // {status && <div className="mb-4 text-center text-sm font-medium text-green-600">{status}</div>}
   );
 }
